@@ -1,0 +1,71 @@
+@prefix lv2:  <http://lv2plug.in/ns/lv2core#> .
+@prefix pset: <http://lv2plug.in/ns/ext/presets#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+# One preset per traced BB Preamp variant. Knobs at noon; only the
+# variant-defining controls (COMP, MODEL, MID) differ.
+
+<http://dataforte.stom-pi/plugins/bbpreamp#preset-1.5>
+    a pset:Preset ;
+    lv2:appliesTo <http://dataforte.stom-pi/plugins/bbpreamp> ;
+    rdfs:label "BB Preamp 1.5 (current)" ;
+    lv2:port
+        [ lv2:symbol "gain" ;   pset:value 5.0 ] ,
+        [ lv2:symbol "volume" ; pset:value 5.0 ] ,
+        [ lv2:symbol "treble" ; pset:value 5.0 ] ,
+        [ lv2:symbol "bass" ;   pset:value 5.0 ] ,
+        [ lv2:symbol "mid" ;    pset:value 2.0 ] ,
+        [ lv2:symbol "comp" ;   pset:value 2.0 ] ,
+        [ lv2:symbol "model" ;  pset:value 0.0 ] .
+
+<http://dataforte.stom-pi/plugins/bbpreamp#preset-at>
+    a pset:Preset ;
+    lv2:appliesTo <http://dataforte.stom-pi/plugins/bbpreamp> ;
+    rdfs:label "BB-AT (Andy Timmons / pre-2007)" ;
+    lv2:port
+        [ lv2:symbol "gain" ;   pset:value 5.0 ] ,
+        [ lv2:symbol "volume" ; pset:value 5.0 ] ,
+        [ lv2:symbol "treble" ; pset:value 5.0 ] ,
+        [ lv2:symbol "bass" ;   pset:value 5.0 ] ,
+        [ lv2:symbol "mid" ;    pset:value 2.0 ] ,
+        [ lv2:symbol "comp" ;   pset:value 0.0 ] ,
+        [ lv2:symbol "model" ;  pset:value 0.0 ] .
+
+<http://dataforte.stom-pi/plugins/bbpreamp#preset-bass>
+    a pset:Preset ;
+    lv2:appliesTo <http://dataforte.stom-pi/plugins/bbpreamp> ;
+    rdfs:label "Bass BB Preamp" ;
+    lv2:port
+        [ lv2:symbol "gain" ;   pset:value 5.0 ] ,
+        [ lv2:symbol "volume" ; pset:value 5.0 ] ,
+        [ lv2:symbol "treble" ; pset:value 5.0 ] ,
+        [ lv2:symbol "bass" ;   pset:value 5.0 ] ,
+        [ lv2:symbol "mid" ;    pset:value 2.0 ] ,
+        [ lv2:symbol "comp" ;   pset:value 2.0 ] ,
+        [ lv2:symbol "model" ;  pset:value 1.0 ] .
+
+<http://dataforte.stom-pi/plugins/bbpreamp#preset-comp-off>
+    a pset:Preset ;
+    lv2:appliesTo <http://dataforte.stom-pi/plugins/bbpreamp> ;
+    rdfs:label "Custom Shop Comp, no compression" ;
+    lv2:port
+        [ lv2:symbol "gain" ;   pset:value 5.0 ] ,
+        [ lv2:symbol "volume" ; pset:value 5.0 ] ,
+        [ lv2:symbol "treble" ; pset:value 5.0 ] ,
+        [ lv2:symbol "bass" ;   pset:value 5.0 ] ,
+        [ lv2:symbol "mid" ;    pset:value 2.0 ] ,
+        [ lv2:symbol "comp" ;   pset:value 1.0 ] ,
+        [ lv2:symbol "model" ;  pset:value 0.0 ] .
+
+<http://dataforte.stom-pi/plugins/bbpreamp#preset-mb>
+    a pset:Preset ;
+    lv2:appliesTo <http://dataforte.stom-pi/plugins/bbpreamp> ;
+    rdfs:label "Custom Shop MB, mids up" ;
+    lv2:port
+        [ lv2:symbol "gain" ;   pset:value 5.0 ] ,
+        [ lv2:symbol "volume" ; pset:value 5.0 ] ,
+        [ lv2:symbol "treble" ; pset:value 5.0 ] ,
+        [ lv2:symbol "bass" ;   pset:value 5.0 ] ,
+        [ lv2:symbol "mid" ;    pset:value 6.0 ] ,
+        [ lv2:symbol "comp" ;   pset:value 2.0 ] ,
+        [ lv2:symbol "model" ;  pset:value 0.0 ] .

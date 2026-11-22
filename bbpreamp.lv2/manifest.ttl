@@ -1,0 +1,33 @@
+@prefix lv2:  <http://lv2plug.in/ns/lv2core#> .
+@prefix pset: <http://lv2plug.in/ns/ext/presets#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+<http://dataforte.stom-pi/plugins/bbpreamp>
+    a lv2:Plugin ;
+    lv2:binary <bbpreamp.so> ;
+    rdfs:seeAlso <bbpreamp.ttl> .
+
+<http://dataforte.stom-pi/plugins/bbpreamp#preset-1.5>
+    a pset:Preset ;
+    lv2:appliesTo <http://dataforte.stom-pi/plugins/bbpreamp> ;
+    rdfs:seeAlso <presets.ttl> .
+
+<http://dataforte.stom-pi/plugins/bbpreamp#preset-at>
+    a pset:Preset ;
+    lv2:appliesTo <http://dataforte.stom-pi/plugins/bbpreamp> ;
+    rdfs:seeAlso <presets.ttl> .
+
+<http://dataforte.stom-pi/plugins/bbpreamp#preset-bass>
+    a pset:Preset ;
+    lv2:appliesTo <http://dataforte.stom-pi/plugins/bbpreamp> ;
+    rdfs:seeAlso <presets.ttl> .
+
+<http://dataforte.stom-pi/plugins/bbpreamp#preset-comp-off>
+    a pset:Preset ;
+    lv2:appliesTo <http://dataforte.stom-pi/plugins/bbpreamp> ;
+    rdfs:seeAlso <presets.ttl> .
+
+<http://dataforte.stom-pi/plugins/bbpreamp#preset-mb>
+    a pset:Preset ;
+    lv2:appliesTo <http://dataforte.stom-pi/plugins/bbpreamp> ;
+    rdfs:seeAlso <presets.ttl> .
