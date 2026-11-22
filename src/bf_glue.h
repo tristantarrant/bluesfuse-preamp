@@ -8,8 +8,8 @@
 
 #pragma once
 
-#ifndef BB_GLUE_H
-#define BB_GLUE_H
+#ifndef BF_GLUE_H
+#define BF_GLUE_H
 
 #include <cstdint>
 #include <cstdlib>
@@ -94,4 +94,4 @@ struct PluginLV2 {
     deletefunc delete_instance; // delete this plugin instance
 };
 
-#endif // BB_GLUE_H
+#endif // BF_GLUE_H

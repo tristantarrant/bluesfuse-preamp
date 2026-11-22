@@ -1,14 +1,14 @@
-# BB Preamp - Xotic BB Preamp emulation (1.5 / AT / Bass / Comp / MB)
+# BluesFuse Preamp - Xotic BB Preamp emulation (1.5 / AT / Bass / Comp / MB)
 #
 # Targets:
 #   make          build the .so into the LV2 bundle
-#   make tf       regenerate src/bbpreamp_tf.lib from the circuit (sympy)
+#   make tf       regenerate src/bluesfuse_tf.lib from the circuit (sympy)
 #   make dsp      regenerate the faust-generated C++ from the .dsp source
 #   make install  copy the bundle to $(INSTALL_DIR) (default: /usr/lib/lv2)
 #   make test     build and run the LV2 test harness
 #   make clean    remove build products
 
-PLUG    := bbpreamp
+PLUG    := bluesfuse
 BUNDLE  := $(PLUG).lv2
 DSP     := src/$(PLUG).dsp
 TF      := src/$(PLUG)_tf.lib
@@ -43,7 +43,7 @@ dsp:
 # ---- compile ------------------------------------------------------------
 so: $(SO)
 
-$(SO): $(CPP) $(CC_GEN) $(HDR) src/bb_glue.h
+$(SO): $(CPP) $(CC_GEN) $(HDR) src/bf_glue.h
 	$(CXX) $(CXXFLAGS) -shared -o $@ $(CPP) $(LDFLAGS)
 
 install: so
@@ -52,8 +52,8 @@ install: so
 	cp -r $(BUNDLE) "$(INSTALL_DIR)/"
 
 test: so
-	$(CC) -O2 -o bb_test tests/bb_test.c -ldl -lm
-	./bb_test $(CURDIR)/$(SO)
+	$(CC) -O2 -o bf_test tests/bf_test.c -ldl -lm
+	./bf_test $(CURDIR)/$(SO)
 
 clean:
-	rm -f $(SO) bb_test
+	rm -f $(SO) bf_test

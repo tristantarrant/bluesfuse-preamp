@@ -1,8 +1,8 @@
-// generated from file 'src/bbpreamp.dsp' by dsp2cc:
+// generated from file 'src/bluesfuse.dsp' by dsp2cc:
 // Code generated with Faust 2.85.9 (https://faust.grame.fr)
 
 
-namespace bbpreamp {
+namespace bluesfuse {
 
 class Dsp: public PluginLV2 {
 private:
@@ -75,8 +75,8 @@ public:
 Dsp::Dsp()
 	: PluginLV2() {
 	version = PLUGINLV2_VERSION;
-	id = "bbpreamp";
-	name = N_("BB Preamp");
+	id = "bluesfuse";
+	name = N_("BluesFuse Preamp");
 	mono_audio = compute_static;
 	stereo_audio = 0;
 	set_samplerate = init_static;
@@ -366,4 +366,4 @@ typedef enum
 } PortIndex;
 */
 
-} // end namespace bbpreamp
+} // end namespace bluesfuse

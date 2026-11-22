@@ -1,4 +1,4 @@
 *.so
-bb_test
+bf_test
 *.tmp
 __pycache__/

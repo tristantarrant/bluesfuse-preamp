@@ -1,6 +1,6 @@
-# BB Preamp
+# BluesFuse Preamp
 
-Faust-based LV2 emulation of the **Xotic BB Preamp** overdrive, covering
+**BluesFuse Preamp** is a Faust-based LV2 emulation of the **Xotic BB Preamp** overdrive, covering
 the five variants traced by Aion FX in 2021
 ([Tracing Journal: Xotic BB Preamp (five variants)](https://aionfx.com/news/tracing-journal-xotic-bb-preamp-five-variants/)):
 
@@ -49,10 +49,10 @@ in -> Q1 buffer -> IC1A TS clipper -> IC1B TS tone -> IC2A gain stage
 
 The linear stages are **exact solutions of the circuit**: `tools/gen_tf.py`
 runs symbolic nodal analysis (sympy) on the netlists of both component sets
-and writes `src/bbpreamp_tf.lib`. This contains the analog H(s) coefficients
+and writes `src/bluesfuse_tf.lib`. This contains the analog H(s) coefficients
 as polynomials in the pot positions, plus their bilinear discretization.
-`src/bbpreamp.dsp` adds the clipper, rails and buffers, and the guitarix
-`dsp2cc` tool turns it into `src/bbpreamp.cc`.
+`src/bluesfuse.dsp` adds the clipper, rails and buffers, and the guitarix
+`dsp2cc` tool turns it into `src/bluesfuse.cc`.
 
 IC1B is modelled with the JRC4558's finite gain-bandwidth (3 MHz). The Bass
 BB's extra C7 (1n from IC1B's + input to its output) is a positive-feedback
@@ -88,10 +88,10 @@ meant to push an amp.
 Requires a C++ compiler; no other dependencies (the LV2 API is header-only).
 
 ```
-make            # build the .so into bbpreamp.lv2/
+make            # build the .so into bluesfuse.lv2/
 make test       # build and run the LV2 test harness
 make install    # copy the bundle to /usr/lib/lv2 (override INSTALL_DIR)
-make tf         # regenerate src/bbpreamp_tf.lib from the netlists (sympy)
+make tf         # regenerate src/bluesfuse_tf.lib from the netlists (sympy)
 make dsp        # regenerate the faust-generated C++ from the .dsp source
                 # (needs faust + the guitarix dsp2cc tool)
 ```
@@ -103,14 +103,14 @@ CPU: about 0.6% of one desktop core (Ryzen 9900X) at 48 kHz. Expect a
 
 ```
 tools/gen_tf.py           netlists + nodal analysis -> Faust transfer functions
-src/bbpreamp_tf.lib       generated linear stages (regenerate with 'make tf')
-src/bbpreamp.dsp          Faust DSP: clipper, rails, buffers, controls
-src/bbpreamp.cc           generated DSP class (regenerate with 'make dsp')
-src/bbpreamp.h            PortIndex enum + plugin URI
-src/bbpreamp.cpp          LV2 wrapper (guitarix per-plugin pattern)
-src/bb_glue.h             minimal glue header for the generated class
-bbpreamp.lv2/             LV2 bundle (manifest, plugin TTL, presets, .so)
-tests/bb_test.c           LV2 test harness
+src/bluesfuse_tf.lib       generated linear stages (regenerate with 'make tf')
+src/bluesfuse.dsp          Faust DSP: clipper, rails, buffers, controls
+src/bluesfuse.cc           generated DSP class (regenerate with 'make dsp')
+src/bluesfuse.h            PortIndex enum + plugin URI
+src/bluesfuse.cpp          LV2 wrapper (guitarix per-plugin pattern)
+src/bf_glue.h             minimal glue header for the generated class
+bluesfuse.lv2/             LV2 bundle (manifest, plugin TTL, presets, .so)
+tests/bf_test.c           LV2 test harness
 ```
 
 ## License

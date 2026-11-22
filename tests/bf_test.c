@@ -1,11 +1,11 @@
 /*
- * BB Preamp - LV2 test harness
+ * BluesFuse Preamp - LV2 test harness
  *
  * Loads the plugin with the raw LV2 C API, exercises the DSP with a few
  * control/audio scenarios and checks the results against the expected
  * behaviour of the circuit.
  *
- * Usage: ./bb_test /path/to/bbpreamp.lv2/bbpreamp.so
+ * Usage: ./bf_test /path/to/bluesfuse.lv2/bluesfuse.so
  */
 
 #include <stdio.h>

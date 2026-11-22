@@ -1,11 +1,11 @@
 #pragma once
 
-#ifndef BB_BBPREAMP_H
-#define BB_BBPREAMP_H
+#ifndef BF_BLUESFUSE_H
+#define BF_BLUESFUSE_H
 
 #include <lv2.h>
 
-#define BBPLUGIN_URI "http://dataforte.stom-pi/plugins/bbpreamp"
+#define BFPLUGIN_URI "http://dataforte.stom-pi/plugins/bluesfuse"
 
 typedef enum
 {
@@ -20,4 +20,4 @@ typedef enum
   EFFECTS_INPUT,
 } PortIndex;
 
-#endif // BB_BBPREAMP_H
+#endif // BF_BLUESFUSE_H

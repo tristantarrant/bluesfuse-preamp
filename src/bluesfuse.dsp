@@ -1,12 +1,12 @@
-declare id "bbpreamp";
-declare name "BB Preamp";
+declare id "bluesfuse";
+declare name "BluesFuse Preamp";
 declare category "Distortion";
 declare author "Dataforte";
 declare license "GPL-2.0-or-later";
 declare description "Emulation of the Xotic BB Preamp overdrive and its variants (1.5, AT, Bass, Custom Shop Comp and MB), after the Aion FX trace schematics (2021): BJT input buffer, Tube Screamer style diode-feedback clipper, TS tone stage, variable-gain stage (dual-gang VOLUME), two-band Baxandall EQ and BJT output buffer.";
 
 import("stdfaust.lib");
-tf = library("bbpreamp_tf.lib");
+tf = library("bluesfuse_tf.lib");
 
 // ====================================================================
 //  Circuit constants

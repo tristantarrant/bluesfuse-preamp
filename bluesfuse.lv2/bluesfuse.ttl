@@ -29,18 +29,18 @@
     a foaf:Person ;
     foaf:name "Dataforte" .
 
-<http://dataforte.stom-pi/plugins/bbpreamp>
+<http://dataforte.stom-pi/plugins/bluesfuse>
     a doap:Project ;
     doap:maintainer <http://dataforte.stom-pi#me> ;
-    doap:name "BB Preamp" .
+    doap:name "BluesFuse Preamp" .
 
-<http://dataforte.stom-pi/plugins/bbpreamp>
+<http://dataforte.stom-pi/plugins/bluesfuse>
     a lv2:Plugin ,
         lv2:DistortionPlugin ;
     doap:maintainer <http://dataforte.stom-pi#me> ;
-    doap:name "BB Preamp" ;
+    doap:name "BluesFuse Preamp" ;
     doap:license <https://www.gnu.org/licenses/gpl-2.0> ;
-    lv2:project <http://dataforte.stom-pi/plugins/bbpreamp> ;
+    lv2:project <http://dataforte.stom-pi/plugins/bluesfuse> ;
     lv2:optionalFeature lv2:hardRTCapable ;
 
     lv2:minorVersion 1 ;

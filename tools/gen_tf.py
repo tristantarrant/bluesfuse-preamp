@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Generate src/bbpreamp_tf.lib: Faust transfer functions of the linear stages
+Generate src/bluesfuse_tf.lib: Faust transfer functions of the linear stages
 of the Xotic BB Preamp, derived by symbolic nodal analysis (ideal op-amps)
 of the Aion FX trace schematics (10/22/2021):
 https://aionfx.com/news/tracing-journal-xotic-bb-preamp-five-variants/
@@ -16,7 +16,7 @@ Pot positions (0..1, clockwise rotation, already tapered):
   pb  BASS   50kB   Baxandall, CW = wiper towards the input side
   pt  TREBLE 50kB   Baxandall, CW = wiper towards the input side
 
-Usage: tools/gen_tf.py > src/bbpreamp_tf.lib
+Usage: tools/gen_tf.py > src/bluesfuse_tf.lib
 """
 
 import sys
@@ -109,7 +109,7 @@ def solve(elements, opamps, unknown, out):
 def stage_clipfb(c):
     """IC1A feedback drive: the linear voltage across the feedback network,
     u = Vin * Yg(s) * Zf(s), Yg = ground leg (R6 + C4), Zf = (Rgain+R5)||C3.
-    The diodes clip this voltage (see bbpreamp.dsp)."""
+    The diodes clip this voltage (see bluesfuse.dsp)."""
     Rf = pg * PGAIN + RMIN + sp.nsimplify(c["R5"])
     R6, C4, C3 = (sp.nsimplify(c[x]) for x in ("R6", "C4", "C3"))
     H = sp.cancel(Rf * s * C4 / ((1 + s * C4 * R6) * (1 + s * Rf * C3)))
