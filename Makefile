@@ -15,6 +15,7 @@
 #   make test-all      all of the above
 #   make tf            regenerate src/bluesfuse_tf.lib from the circuit (sympy)
 #   make dsp           regenerate src/bluesfuse.cc from the .dsp
+#   make screenshot    re-render screenshot.png (README image) from the artwork
 #   make modgui        re-render the modgui from the artwork
 #   make clean
 
@@ -36,7 +37,7 @@ DSP2CC  ?= /home/tst/Fun/guitarix/trunk/tools/dsp2cc
 
 TTL_GEN := dpf/utils/lv2_ttl_generator
 
-.PHONY: all plugin ttl tf dsp modgui install install-all test test-clap test-ui test-modgui test-all clean distclean
+.PHONY: screenshot all plugin ttl tf dsp modgui install install-all test test-clap test-ui test-modgui test-all clean distclean
 
 all: ttl
 
@@ -73,6 +74,10 @@ build/render_modgui: tools/render_modgui.cpp plugins/BluesFuse/Artwork.hpp
 
 modgui: build/render_modgui
 	build/render_modgui modgui
+
+# README image: the pedal at its default settings, 1.5x the design size
+screenshot: build/render_modgui
+	build/render_modgui --preview screenshot.png 1.5
 
 install: ttl
 	mkdir -p "$(DESTDIR)$(INSTALL_DIR)"

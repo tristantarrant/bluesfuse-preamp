@@ -1,5 +1,9 @@
 # BluesFuse Preamp
 
+<p align="center">
+  <img src="screenshot.png" alt="BluesFuse Preamp GUI" width="240">
+</p>
+
 **BluesFuse Preamp** is a Faust-based emulation of the **Xotic BB Preamp** overdrive (LV2 with a
 Stom-Pi/MOD modgui, VST3, CLAP and a standalone JACK app, with a scalable GUI that recalls
 the original pedal), covering
