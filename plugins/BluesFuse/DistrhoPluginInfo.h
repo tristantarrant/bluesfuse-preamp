@@ -7,12 +7,12 @@
 #ifndef DISTRHO_PLUGIN_INFO_H_INCLUDED
 #define DISTRHO_PLUGIN_INFO_H_INCLUDED
 
-#define DISTRHO_PLUGIN_BRAND   "Rustyfoot"
+#define DISTRHO_PLUGIN_BRAND   "Dataforte"
 #define DISTRHO_PLUGIN_NAME    "BluesFuse Preamp"
 #define DISTRHO_PLUGIN_URI     "http://dataforte.stom-pi/plugins/bluesfuse"
-#define DISTRHO_PLUGIN_CLAP_ID "pi.stom.rustyfoot.bluesfuse"
+#define DISTRHO_PLUGIN_CLAP_ID "pi.stom.dataforte.bluesfuse"
 
-#define DISTRHO_PLUGIN_BRAND_ID  Rsty
+#define DISTRHO_PLUGIN_BRAND_ID  Dfte
 #define DISTRHO_PLUGIN_UNIQUE_ID bFus
 
 #define DISTRHO_PLUGIN_HAS_UI          1

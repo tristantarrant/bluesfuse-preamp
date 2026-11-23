@@ -460,7 +460,7 @@ inline void draw(cairo_t* cr, const State& s, unsigned layers = kLayerAll)
 
         footswitch(cr, FOOT_X, FOOT_Y);
         text(cr, "Bypass", FOOT_X, FOOT_Y + 35, 11, kWhite, kCenter, true, true);
-        text(cr, "rustyfoot", W / 2, H - 20, 15, kWhite, kCenter, false, true, "DejaVu Serif");
+        text(cr, "dataforte", W / 2, H - 20, 15, kWhite, kCenter, false, true, "DejaVu Serif");
     }
 
     if (layers & kLayerKnobs) {

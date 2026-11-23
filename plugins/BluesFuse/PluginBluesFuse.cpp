@@ -74,11 +74,11 @@ protected:
                "Custom Shop Comp and MB), after the Aion FX trace schematics: TS-style diode "
                "clipper, dual-gang volume and 2-band Baxandall EQ.";
     }
-    const char* getMaker() const override { return "Rustyfoot"; }
+    const char* getMaker() const override { return "Dataforte"; }
     const char* getHomePage() const override { return "https://github.com/tristantarrant/bluesfuse-preamp"; }
     const char* getLicense() const override { return "GPL-2.0-or-later"; }
     uint32_t getVersion() const override { return d_version(1, 1, 0); }
-    int64_t getUniqueId() const override { return d_cconst('R', 'b', 'F', 's'); }
+    int64_t getUniqueId() const override { return d_cconst('D', 'b', 'F', 's'); }
 
     void initAudioPort(const bool input, const uint32_t index, AudioPort& port) override
     {

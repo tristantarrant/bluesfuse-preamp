@@ -95,7 +95,7 @@ test: ttl
 test-clap: ttl
 	mkdir -p build
 	$(CC) -O2 -std=c11 -Idpf/distrho/src -o build/clap_check tests/clap_check.c -ldl -lm
-	build/clap_check bin/$(PLUG).clap pi.stom.rustyfoot.$(PLUG) 8
+	build/clap_check bin/$(PLUG).clap pi.stom.dataforte.$(PLUG) 8
 
 # Drives the real UI under Xvfb with XTest: host->UI values, knob drags,
 # wheel, double-click reset, COMP lever, MODEL switch, footswitch, resizing.

@@ -195,7 +195,7 @@ static bool write_modgui_text(const std::string& dir)
         "        modgui:stylesheet <modgui/stylesheet.css> ;\n"
         "        modgui:screenshot <modgui/screenshot.png> ;\n"
         "        modgui:thumbnail <modgui/thumbnail.png> ;\n"
-        "        modgui:brand \"Rustyfoot\" ;\n"
+        "        modgui:brand \"Dataforte\" ;\n"
         "        modgui:label \"BluesFuse Preamp\" ;\n"
         "    ] .\n";
 
