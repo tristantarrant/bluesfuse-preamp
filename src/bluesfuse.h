@@ -5,7 +5,7 @@
 
 #include <lv2.h>
 
-#define BFPLUGIN_URI "http://dataforte.stom-pi/plugins/bluesfuse"
+#define BFPLUGIN_URI "http://dataforte.net/plugins/bluesfuse"
 
 typedef enum
 {

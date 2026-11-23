@@ -106,7 +106,7 @@ test-ui: ttl
 	mkdir -p build $(UI_SHOTS)
 	$(CC) -O2 -o build/ui_test tests/ui_test.c -ldl -lm -lX11 -lXtst
 	xvfb-run -a -s "-screen 0 1400x1400x24" build/ui_test \
-	  $(CURDIR)/$(BUNDLE)/$(PLUG)_ui.so http://dataforte.stom-pi/plugins/$(PLUG) \
+	  $(CURDIR)/$(BUNDLE)/$(PLUG)_ui.so http://dataforte.net/plugins/$(PLUG) \
 	  $(CURDIR)/$(BUNDLE)/ 240x450 portmap:lv2_enabled=9 \
 	  size:240x450 shot:$(UI_SHOTS)/default.png \
 	  set:2=8 set:6=7 set:7=0 set:8=1 set:9=0 shot:$(UI_SHOTS)/host-values.png \
