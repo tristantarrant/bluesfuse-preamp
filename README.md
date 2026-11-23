@@ -12,7 +12,7 @@ the five variants traced by Aion FX in 2021
 | Custom Shop MB (mid boost) | the MID knob (2 = stock voicing) |
 | Bass BB Preamp | MODEL = Bass |
 
-All five are also shipped as LV2 presets.
+All five are also shipped as LV2 presets, along with three published settings (see [Presets](#presets)).
 
 ## Circuit
 
@@ -82,6 +82,33 @@ Levels: 1.0 full scale = 1 V at the pedal input and output, so the pedal's
 own gain structure is kept (unity is around VOLUME 5–6). At full VOLUME the
 pedal is a +12 dB booster and can exceed 0 dBFS, just as the hardware is
 meant to push an amp.
+
+## Presets
+
+Variant presets (knobs at noon): **1.5 (current circuit)**, **AT (pre-2007,
+one diode)**, **Bass model**, **Comp: no compression**, **MB: mids up**.
+
+Published settings, converted from clock positions (7:00 = 0, noon = 5,
+5:00 = 10):
+
+| Preset | Source | GAIN | VOLUME | TREBLE | BASS | COMP | MODEL |
+|---|---|---|---|---|---|---|---|
+| Andy Timmons (AT manual setting) | the setting pictured in Timmons' BB-AT owner's manual | 5.0 | 2.3 | 4.0 | 7.0 | AT | Guitar |
+| Bass: SVT Overdrive | Xotic Bass v1.5 manual, factory "Sample Settings" | 5.0 | 5.0 | 6.0 | 8.5 | 1.5 | Bass |
+| Bass: Flip-Top Clean | Xotic Bass v1.5 manual, factory "Sample Settings" | 2.0 | 6.0 | 5.0 | 6.5 | 1.5 | Bass |
+
+Timmons' setting sits around unity gain (+3 dB for soft playing,
+compressing to −11 dB when hit hard), which fits his use of the pedal as
+an always-on drive. The two bass settings are named after Ampeg's SVT
+and B-15 "Flip-Top" amps. They come from the manual of the current Bass
+v1.5, which may differ from the traced Bass circuit modelled here. On the
+traced circuit (linear 1M gain pot) "Flip-Top Clean" is clean only for
+soft playing (2.6% THD at 50 mV) and lightly driven at normal bass levels
+(~13% at 200 mV). The values are kept as Xotic published them.
+
+The pedal is credited to Keith Urban (Custom Shop MB + standard), Ben
+Gibbard, Mike Sullivan, Greg Howe and Danielle Haim, but no knob settings
+of theirs have been published, so they are not shipped as presets.
 
 ## Building
 

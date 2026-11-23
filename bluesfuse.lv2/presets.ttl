@@ -69,3 +69,55 @@
         [ lv2:symbol "mid" ;    pset:value 6.0 ] ,
         [ lv2:symbol "comp" ;   pset:value 2.0 ] ,
         [ lv2:symbol "model" ;  pset:value 0.0 ] .
+
+# ---------------------------------------------------------------------
+# Published settings. Clock positions converted to 0..10 with 7:00 = 0,
+# noon = 5, 5:00 = 10 (300-degree pots).
+
+# Andy Timmons: the one setting pictured in his BB-AT owner's manual
+# ("Thanks for purchasing my BB Preamp Andy Timmons Signature..."):
+# GAIN noon, VOLUME just past 9:00, TREBLE 11:00, BASS 2:00, on the
+# AT (one diode per direction) circuit. Comes out around unity gain.
+<http://dataforte.stom-pi/plugins/bluesfuse#preset-timmons>
+    a pset:Preset ;
+    lv2:appliesTo <http://dataforte.stom-pi/plugins/bluesfuse> ;
+    rdfs:label "Andy Timmons (AT manual setting)" ;
+    lv2:port
+        [ lv2:symbol "gain" ;   pset:value 5.0 ] ,
+        [ lv2:symbol "volume" ; pset:value 2.3 ] ,
+        [ lv2:symbol "treble" ; pset:value 4.0 ] ,
+        [ lv2:symbol "bass" ;   pset:value 7.0 ] ,
+        [ lv2:symbol "mid" ;    pset:value 2.0 ] ,
+        [ lv2:symbol "comp" ;   pset:value 0.0 ] ,
+        [ lv2:symbol "model" ;  pset:value 0.0 ] .
+
+# Xotic's factory "Sample Settings" from the Bass v1.5 owner's manual,
+# named after Ampeg's SVT and B-15 "Flip-Top" bass amps. Note: that
+# manual describes the current Bass v1.5; on the traced Bass circuit
+# modelled here (linear 1M gain pot), "Flip-Top Clean" is clean only
+# at low input levels and lightly driven at normal bass levels.
+<http://dataforte.stom-pi/plugins/bluesfuse#preset-bass-svt>
+    a pset:Preset ;
+    lv2:appliesTo <http://dataforte.stom-pi/plugins/bluesfuse> ;
+    rdfs:label "Bass: SVT Overdrive (Xotic factory sample)" ;
+    lv2:port
+        [ lv2:symbol "gain" ;   pset:value 5.0 ] ,
+        [ lv2:symbol "volume" ; pset:value 5.0 ] ,
+        [ lv2:symbol "treble" ; pset:value 6.0 ] ,
+        [ lv2:symbol "bass" ;   pset:value 8.5 ] ,
+        [ lv2:symbol "mid" ;    pset:value 2.0 ] ,
+        [ lv2:symbol "comp" ;   pset:value 2.0 ] ,
+        [ lv2:symbol "model" ;  pset:value 1.0 ] .
+
+<http://dataforte.stom-pi/plugins/bluesfuse#preset-bass-fliptop>
+    a pset:Preset ;
+    lv2:appliesTo <http://dataforte.stom-pi/plugins/bluesfuse> ;
+    rdfs:label "Bass: Flip-Top Clean (Xotic factory sample)" ;
+    lv2:port
+        [ lv2:symbol "gain" ;   pset:value 2.0 ] ,
+        [ lv2:symbol "volume" ; pset:value 6.0 ] ,
+        [ lv2:symbol "treble" ; pset:value 5.0 ] ,
+        [ lv2:symbol "bass" ;   pset:value 6.5 ] ,
+        [ lv2:symbol "mid" ;    pset:value 2.0 ] ,
+        [ lv2:symbol "comp" ;   pset:value 2.0 ] ,
+        [ lv2:symbol "model" ;  pset:value 1.0 ] .

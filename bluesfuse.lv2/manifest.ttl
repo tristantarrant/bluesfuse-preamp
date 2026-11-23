@@ -31,3 +31,18 @@
     a pset:Preset ;
     lv2:appliesTo <http://dataforte.stom-pi/plugins/bluesfuse> ;
     rdfs:seeAlso <presets.ttl> .
+
+<http://dataforte.stom-pi/plugins/bluesfuse#preset-timmons>
+    a pset:Preset ;
+    lv2:appliesTo <http://dataforte.stom-pi/plugins/bluesfuse> ;
+    rdfs:seeAlso <presets.ttl> .
+
+<http://dataforte.stom-pi/plugins/bluesfuse#preset-bass-svt>
+    a pset:Preset ;
+    lv2:appliesTo <http://dataforte.stom-pi/plugins/bluesfuse> ;
+    rdfs:seeAlso <presets.ttl> .
+
+<http://dataforte.stom-pi/plugins/bluesfuse#preset-bass-fliptop>
+    a pset:Preset ;
+    lv2:appliesTo <http://dataforte.stom-pi/plugins/bluesfuse> ;
+    rdfs:seeAlso <presets.ttl> .
