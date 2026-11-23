@@ -1,6 +1,8 @@
 # BluesFuse Preamp
 
-**BluesFuse Preamp** is a Faust-based LV2 emulation of the **Xotic BB Preamp** overdrive, covering
+**BluesFuse Preamp** is a Faust-based emulation of the **Xotic BB Preamp** overdrive (LV2 with a
+Stom-Pi/MOD modgui, VST3, CLAP and a standalone JACK app, with a scalable GUI that recalls
+the original pedal), covering
 the five variants traced by Aion FX in 2021
 ([Tracing Journal: Xotic BB Preamp (five variants)](https://aionfx.com/news/tracing-journal-xotic-bb-preamp-five-variants/)):
 
@@ -110,18 +112,56 @@ The pedal is credited to Keith Urban (Custom Shop MB + standard), Ben
 Gibbard, Mike Sullivan, Greg Howe and Danielle Haim, but no knob settings
 of theirs have been published, so they are not shipped as presets.
 
+## GUI
+
+Both GUIs draw the same pedal, which recalls the BB Preamp v1.5: the
+tall vermilion box with a dark inset line, four white knobs in a 2×2
+grid (Gain / Treble over Volume / Bass), the red LED between the top
+pair, a white italic logo, and "out" / "in" printed along the sides. The
+extra controls borrow the Custom Shop layouts: a small MID knob in the
+centre (as on the MB), a mini COMP bat-lever toggle between Volume and
+Bass (as on the Comp; up = AT, centre = Off, down = 1.5), and a GUITAR /
+BASS slide switch under the logo. The footswitch toggles bypass. The
+names and branding are our own.
+
+- **Desktop** (LV2, VST3, CLAP, standalone): vector-drawn with cairo, so it
+  scales cleanly to any size. Resize the window freely; the aspect ratio
+  is kept and the host's HiDPI scale factor is honoured. Drag knobs up or
+  down (Shift for fine control), use the mouse wheel, double-click to
+  reset. Click the upper or lower half of the COMP lever to move it, and
+  click the MODEL switch and the footswitch to toggle them.
+- **Stom-Pi / MOD** (modgui): `modgui/` is rendered from the same artwork
+  (`make modgui`), with film-strip knobs and switches at 2x resolution.
+
+Linux GUIs are X11 (`ui:X11UI`). LV2 defines no Wayland UI type, so on
+Wayland desktops plugin UIs run through XWayland, as in every LV2/VST3
+host today.
+
 ## Building
 
-Requires a C++ compiler; no other dependencies (the LV2 API is header-only).
+Built with [DPF](https://github.com/DISTRHO/DPF) (a git submodule): one
+codebase gives an LV2 bundle (DSP and UI in separate binaries, plus the
+modgui), a VST3, a CLAP and a standalone JACK app. It needs a C++
+compiler; the UI also needs the cairo and X11 development headers, and is
+skipped automatically if they are missing.
 
 ```
-make            # build the .so into bluesfuse.lv2/
-make test       # build and run the LV2 test harness
-make install    # copy the bundle to /usr/lib/lv2 (override INSTALL_DIR)
-make tf         # regenerate src/bluesfuse_tf.lib from the netlists (sympy)
-make dsp        # regenerate the faust-generated C++ from the .dsp source
-                # (needs faust + the guitarix dsp2cc tool)
+git submodule update --init --recursive
+make                # all formats into bin/
+make NOUI=true      # DSP only (headless build hosts such as Stom-Pi)
+make install        # LV2 bundle into /usr/lib/lv2 (INSTALL_DIR=...)
+make install-all    # + VST3, CLAP and the JACK app (VST3_DIR, CLAP_DIR, BIN_DIR)
+make test-all       # DSP, CLAP, UI (Xvfb) and modgui (headless Chrome) tests
+make tf             # regenerate src/bluesfuse_tf.lib from the netlists (sympy)
+make dsp            # regenerate src/bluesfuse.cc from the .dsp
+make modgui         # re-render modgui/ from the artwork
 ```
+
+The DPF plugin class binds the generated DSP's controls by the `PortIndex`
+enum. Presets are DPF programs, exported to LV2 `presets.ttl` and to
+VST3/CLAP from the same list. The LV2 URI and port symbols (including the
+audio ports `in`/`out`) are unchanged from the earlier hand-written LV2
+version, so existing pedalboards keep working.
 
 CPU: about 0.6% of one desktop core (Ryzen 9900X) at 48 kHz. Expect a
 5–10% share of one core on a Raspberry Pi 4.
@@ -129,15 +169,20 @@ CPU: about 0.6% of one desktop core (Ryzen 9900X) at 48 kHz. Expect a
 ## Layout
 
 ```
-tools/gen_tf.py           netlists + nodal analysis -> Faust transfer functions
-src/bluesfuse_tf.lib       generated linear stages (regenerate with 'make tf')
-src/bluesfuse.dsp          Faust DSP: clipper, rails, buffers, controls
-src/bluesfuse.cc           generated DSP class (regenerate with 'make dsp')
-src/bluesfuse.h            PortIndex enum + plugin URI
-src/bluesfuse.cpp          LV2 wrapper (guitarix per-plugin pattern)
-src/bf_glue.h             minimal glue header for the generated class
-bluesfuse.lv2/             LV2 bundle (manifest, plugin TTL, presets, .so)
-tests/bf_test.c           LV2 test harness
+tools/gen_tf.py             netlists + nodal analysis -> Faust transfer functions
+src/bluesfuse_tf.lib        generated linear stages ('make tf')
+src/bluesfuse.dsp           Faust DSP: clipper, rails, buffers, controls
+src/bluesfuse.cc            generated DSP class ('make dsp')
+src/bluesfuse.h, bf_glue.h  PortIndex enum, glue for the generated class
+plugins/BluesFuse/          DPF plugin: info, plugin class, UI, artwork
+  Artwork.hpp               the pedal, drawn with cairo (shared by both GUIs)
+tools/render_modgui.cpp     renders modgui/ (images, HTML, CSS) from the artwork
+modgui/                     generated modgui (checked in)
+tests/bf_test.c             LV2 DSP tests (circuit behaviour, bypass)
+tests/ui_test.c             X11/XTest UI test host (run under Xvfb)
+tests/modgui_check.py       modgui vs artwork in headless Chrome
+tests/clap_check.c          CLAP smoke test
+dpf/                        DPF submodule
 ```
 
 ## License

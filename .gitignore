@@ -1,4 +1,5 @@
+bin/
+build/
 *.so
-bf_test
 *.tmp
 __pycache__/

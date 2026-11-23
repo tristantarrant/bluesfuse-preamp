@@ -1,0 +1,26 @@
+<div class="mod-pedal bf-pedal">
+    <div mod-role="drag-handle" class="mod-drag-handle"></div>
+    <div class="bf-knob bf-gain" mod-role="input-control-port" mod-port-symbol="gain" mod-widget="film"></div>
+    <div class="bf-knob bf-treble" mod-role="input-control-port" mod-port-symbol="treble" mod-widget="film"></div>
+    <div class="bf-knob bf-volume" mod-role="input-control-port" mod-port-symbol="volume" mod-widget="film"></div>
+    <div class="bf-knob bf-bass" mod-role="input-control-port" mod-port-symbol="bass" mod-widget="film"></div>
+    <div class="bf-mid" mod-role="input-control-port" mod-port-symbol="mid" mod-widget="film"></div>
+    <div class="bf-comp" mod-role="input-control-port" mod-port-symbol="comp" mod-widget="film"></div>
+    <div class="bf-model" mod-role="input-control-port" mod-port-symbol="model" mod-widget="film"></div>
+    <div class="bf-led mod-light" mod-role="bypass-light"></div>
+    <div class="bf-foot mod-footswitch" mod-role="bypass"></div>
+    <div class="mod-pedal-input">
+        {{#effect.ports.audio.input}}
+        <div class="mod-input mod-input-disconnected" title="{{name}}" mod-role="input-audio-port" mod-port-symbol="{{symbol}}">
+            <div class="mod-pedal-input-image"></div>
+        </div>
+        {{/effect.ports.audio.input}}
+    </div>
+    <div class="mod-pedal-output">
+        {{#effect.ports.audio.output}}
+        <div class="mod-output mod-output-disconnected" title="{{name}}" mod-role="output-audio-port" mod-port-symbol="{{symbol}}">
+            <div class="mod-pedal-output-image"></div>
+        </div>
+        {{/effect.ports.audio.output}}
+    </div>
+</div>
