@@ -10,7 +10,7 @@
 #define DISTRHO_PLUGIN_BRAND   "Dataforte"
 #define DISTRHO_PLUGIN_NAME    "BluesFuse Preamp"
 #define DISTRHO_PLUGIN_URI     "http://dataforte.stom-pi/plugins/bluesfuse"
-#define DISTRHO_PLUGIN_CLAP_ID "pi.stom.dataforte.bluesfuse"
+#define DISTRHO_PLUGIN_CLAP_ID "net.dataforte.bluesfuse"
 
 #define DISTRHO_PLUGIN_BRAND_ID  Dfte
 #define DISTRHO_PLUGIN_UNIQUE_ID bFus
