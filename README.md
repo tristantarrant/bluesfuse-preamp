@@ -5,7 +5,7 @@
 </p>
 
 **BluesFuse Preamp** is a Faust-based emulation of the **Xotic BB Preamp** overdrive (LV2 with a
-Stom-Pi/MOD modgui, VST3, CLAP and a standalone JACK app, with a scalable GUI that recalls
+modgui, VST3, CLAP and a standalone JACK app, with a scalable GUI that recalls
 the original pedal), covering
 the five variants traced by Aion FX in 2021
 ([Tracing Journal: Xotic BB Preamp (five variants)](https://aionfx.com/news/tracing-journal-xotic-bb-preamp-five-variants/)):
@@ -134,7 +134,7 @@ names and branding are our own.
   down (Shift for fine control), use the mouse wheel, double-click to
   reset. Click the upper or lower half of the COMP lever to move it, and
   click the MODEL switch and the footswitch to toggle them.
-- **Stom-Pi / MOD** (modgui): `modgui/` is rendered from the same artwork
+- **modgui**: `modgui/` is rendered from the same artwork
   (`make modgui`), with film-strip knobs and switches at 2x resolution.
 
 Linux GUIs are X11 (`ui:X11UI`). LV2 defines no Wayland UI type, so on
@@ -152,7 +152,7 @@ skipped automatically if they are missing.
 ```
 git submodule update --init --recursive
 make                # all formats into bin/
-make NOUI=true      # DSP only (headless build hosts such as Stom-Pi)
+make NOUI=true      # DSP only (build hosts without cairo/X11)
 make install        # LV2 bundle into /usr/lib/lv2 (INSTALL_DIR=...)
 make install-all    # + VST3, CLAP and the JACK app (VST3_DIR, CLAP_DIR, BIN_DIR)
 make test-all       # DSP, CLAP, UI (Xvfb) and modgui (headless Chrome) tests
