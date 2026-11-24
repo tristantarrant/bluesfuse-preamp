@@ -3,7 +3,6 @@
 #ifndef BF_BLUESFUSE_H
 #define BF_BLUESFUSE_H
 
-#include <lv2.h>
 
 #define BFPLUGIN_URI "http://dataforte.net/plugins/bluesfuse"
 
