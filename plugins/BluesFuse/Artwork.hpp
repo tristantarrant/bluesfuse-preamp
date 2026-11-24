@@ -22,6 +22,8 @@
 #include <cairo.h>
 #include <cmath>
 
+#include "BrandPath.hpp"
+
 namespace bf_art {
 
 constexpr double W = 240.0;
@@ -460,7 +462,10 @@ inline void draw(cairo_t* cr, const State& s, unsigned layers = kLayerAll)
 
         footswitch(cr, FOOT_X, FOOT_Y);
         text(cr, "Bypass", FOOT_X, FOOT_Y + 35, 11, kWhite, kCenter, true, true);
-        text(cr, "dataforte", W / 2, H - 20, 15, kWhite, kCenter, false, true, "DejaVu Serif");
+        // maker wordmark, baked from Bitcount Grid Double (tools/gen_brand.py),
+        // so the UI and the modgui match on machines without the font
+        set(cr, kWhite);
+        bf_brand::draw(cr, W / 2, H - 20, 15.0);
     }
 
     if (layers & kLayerKnobs) {
