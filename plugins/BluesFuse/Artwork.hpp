@@ -2,8 +2,8 @@
  * BluesFuse Preamp - pedal artwork, drawn with cairo.
  *
  * Shared by the scalable plugin UI (UIBluesFuse.cpp) and by the modgui
- * renderer (tools/render_modgui.cpp), so the desktop GUI and the Stom-Pi
- * web pedal look the same. Everything is drawn in a fixed design space of
+ * renderer (tools/render_modgui.cpp), so the desktop GUI and the modgui
+ * look the same. Everything is drawn in a fixed design space of
  * W x H units; callers scale the cairo context.
  *
  * The layout recalls the BB Preamp v1.5: tall vermilion box with a dark
