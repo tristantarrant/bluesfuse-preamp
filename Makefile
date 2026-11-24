@@ -15,6 +15,7 @@
 #   make test-all      all of the above
 #   make tf            regenerate src/bluesfuse_tf.lib from the circuit (sympy)
 #   make brand         regenerate plugins/BluesFuse/BrandPath.hpp (needs fontTools)
+#   make presets       regenerate plugins/BluesFuse/Presets.hpp from presets/*.json
 #   make dsp           regenerate src/bluesfuse.cc from the .dsp
 #   make screenshot    re-render screenshot.png (README image) from the artwork
 #   make modgui        re-render the modgui from the artwork
@@ -38,7 +39,7 @@ DSP2CC  ?= /home/tst/Fun/guitarix/trunk/tools/dsp2cc
 
 TTL_GEN := dpf/utils/lv2_ttl_generator
 
-.PHONY: screenshot all plugin ttl tf dsp brand modgui install install-all test test-clap test-ui test-modgui test-all clean distclean
+.PHONY: screenshot all plugin ttl tf dsp brand presets modgui install install-all test test-clap test-ui test-modgui test-all clean distclean
 
 all: ttl
 
@@ -71,6 +72,9 @@ dsp:
 
 brand:
 	python3 tools/gen_brand.py --font Bitcount --text dataforte --ns bf_brand --out BrandPath.hpp
+
+presets:
+	python3 tools/gen_presets.py presets/bluesfuse.json plugins/BluesFuse/Presets.hpp
 
 build/render_modgui: tools/render_modgui.cpp plugins/BluesFuse/Artwork.hpp
 	mkdir -p build

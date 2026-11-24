@@ -1,0 +1,66 @@
+{
+  "$comment": "Source of truth for the BluesFuse Preamp presets. Edit this file and run 'make presets' to regenerate plugins/BluesFuse/Presets.hpp (DPF programs, exported to LV2 presets.ttl/manifest.ttl and to VST3/CLAP). The parameter order below must match the Parameters enum in DistrhoPluginInfo.h (gain, volume, treble, bass, mid, comp, model); program 0 must equal 'defaults'.",
+  "parameters": ["gain", "volume", "treble", "bass", "mid", "comp", "model"],
+  "integers": ["comp", "model"],
+  "ranges": {
+    "gain":   [0.0, 10.0],
+    "volume": [0.0, 10.0],
+    "treble": [0.0, 10.0],
+    "bass":   [0.0, 10.0],
+    "mid":    [0.0, 10.0],
+    "comp":   [0.0, 2.0],
+    "model":  [0.0, 1.0]
+  },
+  "defaults": {
+    "gain": 5.0,
+    "volume": 5.0,
+    "treble": 5.0,
+    "bass": 5.0,
+    "mid": 2.0,
+    "comp": 2.0,
+    "model": 0.0
+  },
+  "presets": [
+    {
+      "name": "1.5 (current circuit)",
+      "values": { "gain": 5.0, "volume": 5.0, "treble": 5.0, "bass": 5.0, "mid": 2.0, "comp": 2.0, "model": 0.0 },
+      "source": "Aion FX trace of the BB 1.5 (2021)"
+    },
+    {
+      "name": "AT (pre-2007, one diode)",
+      "values": { "gain": 5.0, "volume": 5.0, "treble": 5.0, "bass": 5.0, "mid": 2.0, "comp": 0.0, "model": 0.0 },
+      "source": "Aion FX trace of the BB-AT"
+    },
+    {
+      "name": "Bass model",
+      "values": { "gain": 5.0, "volume": 5.0, "treble": 5.0, "bass": 5.0, "mid": 2.0, "comp": 2.0, "model": 1.0 },
+      "source": "Aion FX trace of the Bass BB component set"
+    },
+    {
+      "name": "Comp: no compression",
+      "values": { "gain": 5.0, "volume": 5.0, "treble": 5.0, "bass": 5.0, "mid": 2.0, "comp": 1.0, "model": 0.0 },
+      "source": "Custom Shop Comp switch, diodes lifted"
+    },
+    {
+      "name": "MB: mids up",
+      "values": { "gain": 5.0, "volume": 5.0, "treble": 5.0, "bass": 5.0, "mid": 6.0, "comp": 2.0, "model": 0.0 },
+      "source": "Custom Shop MB restored MID control"
+    },
+    {
+      "name": "Andy Timmons (AT manual setting)",
+      "values": { "gain": 5.0, "volume": 2.3, "treble": 4.0, "bass": 7.0, "mid": 2.0, "comp": 0.0, "model": 0.0 },
+      "artist": "Andy Timmons",
+      "source": "the setting pictured in Timmons' BB-AT owner's manual"
+    },
+    {
+      "name": "Bass: SVT Overdrive (Xotic factory sample)",
+      "values": { "gain": 5.0, "volume": 5.0, "treble": 6.0, "bass": 8.5, "mid": 2.0, "comp": 2.0, "model": 1.0 },
+      "source": "Xotic Bass v1.5 manual, factory Sample Settings"
+    },
+    {
+      "name": "Bass: Flip-Top Clean (Xotic factory sample)",
+      "values": { "gain": 2.0, "volume": 6.0, "treble": 5.0, "bass": 6.5, "mid": 2.0, "comp": 2.0, "model": 1.0 },
+      "source": "Xotic Bass v1.5 manual, factory Sample Settings"
+    }
+  ]
+}

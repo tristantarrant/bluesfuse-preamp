@@ -116,6 +116,13 @@ The pedal is credited to Keith Urban (Custom Shop MB + standard), Ben
 Gibbard, Mike Sullivan, Greg Howe and Danielle Haim, but no knob settings
 of theirs have been published, so they are not shipped as presets.
 
+The preset list is data: `presets/bluesfuse.json` is the source of truth
+(names, values, variant/source metadata). `make presets` regenerates the
+checked-in `plugins/BluesFuse/Presets.hpp`; the DPF wrapper exposes those
+entries as programs, which DPF exports to LV2 `manifest.ttl`/`presets.ttl`
+and to VST3/CLAP. Adding or editing a preset means editing the JSON and
+running `make presets` -- no C++ changes.
+
 ## GUI
 
 Both GUIs draw the same pedal, which recalls the BB Preamp v1.5: the

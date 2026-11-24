@@ -16,28 +16,16 @@
 #include "../../src/bluesfuse.h"
 #include "../../src/bluesfuse.cc"
 
+// Preset table and parameter defaults, generated from presets/bluesfuse.json
+#include "Presets.hpp"
+
 START_NAMESPACE_DISTRHO
 
 // --------------------------------------------------------------------
-// Presets: the five traced variants plus published settings (README).
-// Program 0 equals the parameter defaults.
-
-struct BfProgram {
-    const char* name;
-    float gain, volume, treble, bass, mid, comp, model;
-};
-
-static const BfProgram kPrograms[] = {
-    { "1.5 (current circuit)",                       5.0f, 5.0f, 5.0f, 5.0f, 2.0f, 2.0f, 0.0f },
-    { "AT (pre-2007, one diode)",                    5.0f, 5.0f, 5.0f, 5.0f, 2.0f, 0.0f, 0.0f },
-    { "Bass model",                                  5.0f, 5.0f, 5.0f, 5.0f, 2.0f, 2.0f, 1.0f },
-    { "Comp: no compression",                        5.0f, 5.0f, 5.0f, 5.0f, 2.0f, 1.0f, 0.0f },
-    { "MB: mids up",                                 5.0f, 5.0f, 5.0f, 5.0f, 6.0f, 2.0f, 0.0f },
-    { "Andy Timmons (AT manual setting)",            5.0f, 2.3f, 4.0f, 7.0f, 2.0f, 0.0f, 0.0f },
-    { "Bass: SVT Overdrive (Xotic factory sample)",  5.0f, 5.0f, 6.0f, 8.5f, 2.0f, 2.0f, 1.0f },
-    { "Bass: Flip-Top Clean (Xotic factory sample)", 2.0f, 6.0f, 5.0f, 6.5f, 2.0f, 2.0f, 1.0f },
-};
-static constexpr uint32_t kProgramCount = sizeof(kPrograms) / sizeof(kPrograms[0]);
+// Presets come from presets/bluesfuse.json via Presets.hpp (make presets).
+// DPF exports them to LV2 manifest/presets.ttl and to VST3/CLAP.
+static_assert(preset_data::kParamCount == static_cast<unsigned>(kParamBypass),
+              "presets/bluesfuse.json parameter list does not match DistrhoPluginInfo.h");
 
 // --------------------------------------------------------------------
 
@@ -45,10 +33,11 @@ class PluginBluesFuse : public Plugin
 {
 public:
     PluginBluesFuse()
-        : Plugin(kParamCount, kProgramCount, 0),
+        : Plugin(kParamCount, preset_data::kCount, 0),
           fDsp(bluesfuse::plugin())
     {
-        setProgramValues(0);
+        for (uint32_t i = 0; i < kParamBypass; ++i)
+            fParams[i] = preset_data::kDefaults.value[i];
         fParams[kParamBypass] = 0.0f;
 
         for (uint32_t i = 0; i < kParamBypass; ++i)
@@ -124,18 +113,23 @@ protected:
             p.initDesignation(kParameterDesignationBypass);
             break;
         }
+
+        if (index < kParamBypass)
+            p.ranges.def = preset_data::kDefaults.value[index];
     }
 
     void initProgramName(const uint32_t index, String& name) override
     {
-        if (index < kProgramCount)
-            name = kPrograms[index].name;
+        if (index < preset_data::kCount)
+            name = preset_data::kEntries[index].name;
     }
 
     void loadProgram(const uint32_t index) override
     {
-        if (index < kProgramCount)
-            setProgramValues(index);
+        if (index >= preset_data::kCount)
+            return;
+        for (uint32_t i = 0; i < kParamBypass; ++i)
+            fParams[i] = preset_data::kEntries[index].value[i];
     }
 
     float getParameterValue(const uint32_t index) const override
@@ -214,18 +208,6 @@ private:
     std::vector<float> fDry;
     float fWet = 1.0f;
     float fFadeStep = 0.002f;
-
-    void setProgramValues(const uint32_t index)
-    {
-        const BfProgram& pr = kPrograms[index];
-        fParams[kParamGain]   = pr.gain;
-        fParams[kParamVolume] = pr.volume;
-        fParams[kParamTreble] = pr.treble;
-        fParams[kParamBass]   = pr.bass;
-        fParams[kParamMid]    = pr.mid;
-        fParams[kParamComp]   = pr.comp;
-        fParams[kParamModel]  = pr.model;
-    }
 
     static void setEnum(Parameter& p, std::initializer_list<const char*> labels)
     {
